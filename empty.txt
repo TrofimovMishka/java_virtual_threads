@@ -1,0 +1,19 @@
+As a rule of thumb, if your application never has 10,000 virtual threads or more, it is unlikely to benefit from virtual threads. Either it experiences too light a load to need better throughput, or you have not represented sufficiently many tasks to virtual threads.
+Как правило, если ваше приложение никогда не имеет 10 000 или более виртуальных потоков, оно вряд ли получит выгоду от виртуальных потоков. Либо он испытывает слишком небольшую нагрузку, чтобы требовать большей пропускной способности, либо вы не представили достаточно много задач виртуальным потокам.
+
+Pools are designed to share scarce resources, and virtual threads aren’t scarce and therefore should never be pooled! 
+Пулы предназначены для совместного использования ограниченных ресурсов, а виртуальные потоки не являются дефицитными, поэтому их никогда не следует объединять в пулы!
+
+Depending on the OS and configuration, OS threads are quite “heavy", they consume somewhere between 2 and 10 MB by default. So if you want to utilize a million threads in your heavy-load concurrent application, you better have more than 2 TB of memory to spare!
+
+As all Virtual Threads ARE ALWAYS DAEMON THREADS, don’t forget to call join() if you want to wait on the main thread.
+
+To detect the instances of pinning that might be harmful, (JDK Flight Recorder (JFR) emits the jdk.VirtualThreadPinned thread when a blocking operation is pinned; by default this event is enabled when the operation takes longer than 20ms.
+
+Alternatively, you can use the the system property jdk.tracePinnedThreads to emit a stack trace when a thread blocks while pinned. Running with the option -Djdk.tracePinnedThreads=full prints a complete stack trace when a thread blocks while pinned, highlighting native frames and frames holding monitors. Running with the option -Djdk.tracePinnedThreads=short limits the output to just the problematic frames. 
+
+throughput - wydajność - пропускная способность
+
+
+RUN apk add --no-cache tzdata
+ENV TZ="Europe/Warsaw"
