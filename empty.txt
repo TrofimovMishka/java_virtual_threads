@@ -13,7 +13,5 @@ To detect the instances of pinning that might be harmful, (JDK Flight Recorder (
 Alternatively, you can use the the system property jdk.tracePinnedThreads to emit a stack trace when a thread blocks while pinned. Running with the option -Djdk.tracePinnedThreads=full prints a complete stack trace when a thread blocks while pinned, highlighting native frames and frames holding monitors. Running with the option -Djdk.tracePinnedThreads=short limits the output to just the problematic frames. 
 
 throughput - wydajność - пропускная способность
+carrier thread - nić nośna - несущая нить
 
-
-RUN apk add --no-cache tzdata
-ENV TZ="Europe/Warsaw"
